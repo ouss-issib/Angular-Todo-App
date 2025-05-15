@@ -1,12 +1,35 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [RouterModule, CommonModule],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'TodoApp';
+export class AppComponent implements OnInit {
+  title: string = 'TodoApp';
+  currRouter: string = 'home';
+
+  constructor(private router: Router) {
+  }
+
+  ngOnInit(): void {
+
+    if (this.router.url === '/') {
+      this.router.navigateByUrl('/home');
+    }
+  }
+
+  goToHome() {
+    this.currRouter = 'home';
+    this.router.navigateByUrl('/home');
+  }
+
+  goToAbout() {
+    this.currRouter = 'about';
+    this.router.navigateByUrl('/about');
+  }
 }

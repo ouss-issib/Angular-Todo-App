@@ -1,0 +1,50 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Task</th>
+            <th scope="col">Description</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Priority</th>
+            <th scope="col">Category</th>
+            <th scope="col">Status</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td>{{ task.id }}</td>
+            <td>{{ task.name }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.dueDate | date:'mediumDate' }}</td>
+            <td>
+              <span [ngClass]="'badge ' + (task.priority === 'High' ? 'bg-danger' :
+                              task.priority === 'Medium' ? 'bg-warning' : 'bg-info')">
+                {{ task.priority }}
+              </span>
+            </td>
+            <td>{{ task.category }}</td>
+            <td>
+              <span [ngClass]="'badge ' + (task.completed ? 'bg-success' : 'bg-secondary')">
+                {{ task.completed ? 'Completed' : 'Pending' }}
+              </span>
+            </td>
+            <td>
+
+              <button class="btn btn-sm btn-danger me-1" (click)="deleteTask(task.id)">
+                <i class="bi bi-trash"></i>
+              </button>
+              <button class="btn btn-sm" [ngClass]="task.completed ? 'btn-success' : 'btn-secondary'"
+                (click)="toggleTaskCompletion(task.id)">
+                <i class="bi" [ngClass]="task.completed ? 'bi-check-circle-fill' : 'bi-circle'"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
