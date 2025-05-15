@@ -32,4 +32,9 @@ export class AppComponent implements OnInit {
     this.currRouter = 'about';
     this.router.navigateByUrl('/about');
   }
+
+  goToProducts() {
+    this.currRouter = 'products';
+    this.router.navigateByUrl('/products');
+  }
 }

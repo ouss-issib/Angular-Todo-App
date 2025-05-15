@@ -1,8 +1,8 @@
 <div class="container" *ngIf="currRouter!= ''">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container-fluid">
-      <span class="navbar-brand">Todo App {{ currRouter }}</span>
-      <div class="navbar-nav">
+      <span class="navbar-brand">Todo App </span>
+      <div class="navbar-nav d-flex">
         <button class="nav-item btn" (click)="goToHome()"
           [ngClass]="currRouter == 'home' ? 'btn-primary' : 'btn-outline-primary'">
           Home
@@ -10,6 +10,10 @@
         <button class="nav-item btn ms-2" (click)="goToAbout()"
           [ngClass]="currRouter == 'about' ? 'btn-primary' : 'btn-outline-primary'">
           About
+        </button>
+        <button class="nav-item btn ms-2" (click)="goToProducts()"
+          [ngClass]="currRouter == 'products' ? 'btn-primary' : 'btn-outline-primary'">
+          Products
         </button>
       </div>
     </div>
